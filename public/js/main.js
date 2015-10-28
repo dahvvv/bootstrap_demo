@@ -11,7 +11,7 @@ function supports_html5_storage() {
 $(function() {
 
 
-$("#upload-button").click(function() {
+$("#browse-button").click(function() {
 	$("input[type='file']").click();
 });
 
