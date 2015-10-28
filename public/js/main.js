@@ -10,6 +10,11 @@ function supports_html5_storage() {
 
 $(function() {
 
+	$("a.about").click(function(e) {
+		e.preventDefault();
+		$("p.about").slideToggle();
+	})
+
 	$("#browse-button").click(function() {
 		$("input[type='file']").click();
 	});
@@ -22,10 +27,9 @@ $(function() {
 			alert('please select an image to upload');
 		} else {
 			var img = document.createElement("img");
+			img.className = "petPic";
 			img.file = file;
-			console.log('$(".cover")[0]:', $(".cover")[0]);
-			console.log("img:", img);
-			$(".cover")[0].appendChild(img);
+			$("#popup")[0].appendChild(img);
 			
 			var reader = new FileReader();
 			reader.onload = (function(aImg) {
