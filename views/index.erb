@@ -44,11 +44,11 @@
             <h1 class="cover-heading">Cover your page.</h1>
             <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-default" id="upload-button">Upload</a>
+              <a href="#" class="btn btn-lg btn-default" id="upload-button">Browse</a>
             </p>
-            <form id="upload-form" action="/" method="POST" enctype="multipart/form-data">
-              <input type="file" name="file">
-              <input type="submit" value="Upload Image">
+            <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+              <input class="file-type" type="file" name="file">
+              <input class="btn btn-lg btn-default" type="submit" value="Upload Image">
             </form>
           </div>
 
