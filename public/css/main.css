@@ -3,8 +3,23 @@
 }
 */
 
+p.lead {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .btn {
 	margin: 0 5px;
+}
+
+.start-time,
+.end-time {
+	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+	font-size: 27px;
+	border: 1px solid white;
+	padding: 2px 5px;
+	margin: 3px;
+	cursor; pointer;
 }
 
 #upload-form,
