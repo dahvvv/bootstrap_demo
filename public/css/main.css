@@ -1,4 +1,19 @@
+/*p.about {
+	display: none;
+}
+*/
 #upload-form .file-type {
 	visibility: hidden;
 	display: none;
+}
+
+#popup {
+	width: 100%;
+	height: 100%;
+	margin-top: 15%;
+}
+
+.petPic {
+	height: 100%;
+	width: 100%;
 }

@@ -32,23 +32,24 @@
               <h3 class="masthead-brand">Cover</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li class="active"><a class="about" href="#">About</a></li>
+<!--                   <li><a href="#">Features</a></li>
+                  <li><a href="#">Contact</a></li> -->
                 </ul>
               </nav>
             </div>
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Cover your page.</h1>
-            <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+            <div class="lead" id="popup"></div>
+   <!--          <h1 class="cover-heading">Cover your page.</h1> -->
+            <p class="lead about">Upload a picture of your pet.<br>At some point during the day,<br>it will surprise you<br>like MEOW!<br>(or WOOF!)</p>
             <p class="lead">
               <a href="#" class="btn btn-lg btn-default" id="browse-button">Browse</a>
             </p>
             <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
               <input class="file-type" type="file" name="file">
-              <input class="btn btn-lg btn-default" type="submit" value="Upload Image">
+              <input class="btn btn-lg btn-default" type="submit" value="Upload">
             </form>
           </div>
 
