@@ -9,8 +9,8 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/cover.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,6 +46,10 @@
             <p class="lead">
               <a href="#" class="btn btn-lg btn-default">Learn more</a>
             </p>
+            <form id="upload-form" action="/" method="POST" enctype="multipart/form-data">
+              <input type="file" name="file">
+              <input type="submit" value="Upload Image">
+            </form>
           </div>
 
           <div class="mastfoot">
