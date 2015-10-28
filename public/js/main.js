@@ -40,6 +40,7 @@ $(function() {
 
 			setTimeout(function() {
 				$("#popup")[0].appendChild(img);
+				$("audio")[0].play();
 			}, 5000);
 		};
 	})
