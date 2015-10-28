@@ -18,14 +18,18 @@ p.lead {
 
 .start-time,
 .end-time {
+	margin: 3px;
+	display: inline;
+	cursor; pointer;
+}
+
+.start-time button,
+.end-time button {
+	background-color: rgba(0, 0, 0, 0);
 	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 	font-size: 27px;
 	border: 1px solid white;
 	padding: 2px 5px;
-	margin: 3px;
-	background-color: rgba(0, 0, 0, 0);
-	display: inline;
-	cursor; pointer;
 }
 
 #upload-form,

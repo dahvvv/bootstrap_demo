@@ -29,6 +29,14 @@ function distanceFromNow(hours, minutes) {
 	return distance;
 }
 
+function setAMPM(hours, setting) {
+	if (["AM", "PM"].indexOf(setting) == -1) {
+		return false;
+	}
+	hours = (setting == "AM") ? (hours % 12) : (hours % 12 + 12);
+	return hours;
+}
+
 var timeStart = { "hours": 9, "minutes": 0 };
 var timeEnd = { "hours": 17, "minutes": 0 };
 
@@ -74,6 +82,40 @@ $(function() {
 				surpriseBegin(img, audio);
 			}, msRand);
 		};
-	})
+	});
+
+	var dropdowns = document.getElementsByClassName("dropdown");
+	Array.prototype.forEach.call(dropdowns, function(dropdown) {
+		dropdown.addEventListener("click", function(e) {
+			if (e.target.getAttribute("role") == "menuitem") {
+				e.preventDefault();
+
+				console.log("timeStart:", timeStart);
+				console.log("timeEnd:", timeEnd);
+
+				var timeStartOrEnd, minutesOrHours;
+				if (Array.prototype.indexOf.call(this.classList, "start-time") != -1) {
+					timeStartOrEnd = timeStart;
+				} else {
+					timeStartOrEnd = timeEnd;
+				}
+				if (["AM", "PM"].indexOf(e.target.innerText) != -1) {
+					timeStartOrEnd.hours = setAMPM(timeStartOrEnd.hours, parseInt(e.target.innerText));
+				} else {
+					if (Array.prototype.indexOf.call(this.classList, "minutes") != -1) {
+						minutesOrHours = "minutes";
+					} else {
+						minutesOrHours = "hours";
+					}
+					timeStartOrEnd[minutesOrHours] = parseInt(e.target.innerText);
+				}
+
+				console.log("new timeStart:", timeStart);
+				console.log("new timeEnd:", timeEnd);
+				
+			}
+		});
+	
+	});
 
 })
