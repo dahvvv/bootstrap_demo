@@ -2,6 +2,16 @@
 	display: none;
 }
 */
+
+.btn {
+	margin: 0 5px;
+}
+
+#upload-form,
+#browse-button {
+	display: inline-block;
+}
+
 #upload-form .file-type {
 	visibility: hidden;
 	display: none;
