@@ -63,9 +63,16 @@ $(function() {
 			})(img);
 			reader.readAsDataURL(file);
 
+			var timeStart = { "hours": 13, "minutes": 17 };
+			var timeEnd = { "hours": 13, "minutes": 18 };
+
+			var msStart = distanceFromNow(timeStart.hours, timeStart.minutes);
+			var msEnd = distanceFromNow(timeEnd.hours, timeEnd.minutes);
+			var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
+
 			setTimeout(function(){
 				surprise(img, audio);
-			}, 5000);
+			}, msRand);
 		};
 	})
 
