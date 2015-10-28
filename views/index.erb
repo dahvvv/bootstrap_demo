@@ -52,7 +52,26 @@
             </form>
             <p class="lead">
               At some point between 
-              <span class="hours start-time">9</span>
+              <div class="dropdown">
+                <button class="hours start-time dropdown-toggle" id="start-hours" data-toggle="dropdown">
+                  9
+                </button>
+
+                <ul class="dropdown-menu" role="menu" aria-labelledby="start-hours">
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">1</a>
+                  </li>
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">2</a>
+                  </li>
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">3</a>
+                  </li>
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">4</a>
+                  </li>
+                </ul>
+              </div>
               :
               <span class="minutes start-time">00</span>
               <span class="AM-PM start-time">AM</span>
