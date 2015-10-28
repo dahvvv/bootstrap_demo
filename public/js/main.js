@@ -8,6 +8,11 @@ function supports_html5_storage() {
   }
 }
 
+function surprise(img, audio) {
+	$("#popup")[0].appendChild(img);
+	audio.play();
+}
+
 $(function() {
 
 	$("a.about").click(function(e) {
@@ -38,9 +43,8 @@ $(function() {
 			})(img);
 			reader.readAsDataURL(file);
 
-			setTimeout(function() {
-				$("#popup")[0].appendChild(img);
-				$("audio")[0].play();
+			setTimeout(function(){
+				surprise(img, $("audio")[0]);
 			}, 5000);
 		};
 	})
