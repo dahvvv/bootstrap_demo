@@ -7,3 +7,13 @@ function supports_html5_storage() {
     return false;
   }
 }
+
+$(function() {
+
+
+$("#upload-button").click(function() {
+	$("input[type='file']").click();
+});
+
+
+})
