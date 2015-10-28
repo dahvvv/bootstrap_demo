@@ -19,6 +19,16 @@ function surpriseEnd(img, audio) {
 	$(img).hide();
 }
 
+function setSurpriseTime(img, audio) {
+	var msStart = distanceFromNow(timeStart.hours, timeStart.minutes);
+	var msEnd = distanceFromNow(timeEnd.hours, timeEnd.minutes);
+	var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
+
+	setTimeout(function(){
+		surpriseBegin(img, audio);
+	}, msRand);
+}
+
 function distanceFromNow(hours, minutes) {
 	var now = new Date();
 	var future = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
@@ -74,13 +84,7 @@ $(function() {
 			})(img);
 			reader.readAsDataURL(file);
 
-			var msStart = distanceFromNow(timeStart.hours, timeStart.minutes);
-			var msEnd = distanceFromNow(timeEnd.hours, timeEnd.minutes);
-			var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
-
-			setTimeout(function(){
-				surpriseBegin(img, audio);
-			}, msRand);
+			setSurpriseTime(img, audio);
 		};
 	});
 
