@@ -12,6 +12,10 @@ p.lead {
 	margin: 0 5px;
 }
 
+.dropdown {
+	display: inline;
+}
+
 .start-time,
 .end-time {
 	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
@@ -19,6 +23,8 @@ p.lead {
 	border: 1px solid white;
 	padding: 2px 5px;
 	margin: 3px;
+	background-color: rgba(0, 0, 0, 0);
+	display: inline;
 	cursor; pointer;
 }
 
