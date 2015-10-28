@@ -19,6 +19,16 @@ function surpriseEnd(img, audio) {
 	$(img).hide();
 }
 
+function distanceFromNow(hours, minutes) {
+	var now = new Date();
+	var future = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+	var distance = future - now;
+	while (distance < 0) {
+		distance += 24 * 60 * 60 * 1000;
+	}
+	return distance;
+}
+
 $(function() {
 
 	$("a.about").click(function(e) {
