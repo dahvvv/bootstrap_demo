@@ -16,6 +16,7 @@ function surprise(img, audio) {
 
 function surpriseEnd(img, audio) {
 	audio.pause();
+	$(img).hide();
 }
 
 $(function() {
