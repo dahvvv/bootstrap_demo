@@ -8,7 +8,7 @@ function supports_html5_storage() {
   }
 }
 
-function surprise(img, audio) {
+function surpriseBegin(img, audio) {
 	$("#popup")[0].appendChild(img);
 	audio.play();
 	$("button.stop").show();
@@ -28,6 +28,9 @@ function distanceFromNow(hours, minutes) {
 	}
 	return distance;
 }
+
+var timeStart = { "hours": 9, "minutes": 0 };
+var timeEnd = { "hours": 17, "minutes": 0 };
 
 $(function() {
 
@@ -63,15 +66,12 @@ $(function() {
 			})(img);
 			reader.readAsDataURL(file);
 
-			var timeStart = { "hours": 13, "minutes": 17 };
-			var timeEnd = { "hours": 13, "minutes": 18 };
-
 			var msStart = distanceFromNow(timeStart.hours, timeStart.minutes);
 			var msEnd = distanceFromNow(timeEnd.hours, timeEnd.minutes);
 			var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
 
 			setTimeout(function(){
-				surprise(img, audio);
+				surpriseBegin(img, audio);
 			}, msRand);
 		};
 	})
