@@ -6,10 +6,11 @@ get '/' do
 end
 
 post '/upload' do
-	@filename = params[:file][:filename]
 	file = params[:file][:tempfile]
 
-	File.open("./public/images/#{@filename}", "wb") do |f|
+	File.open("./public/images/pet", "wb") do |f|
 		f.write(file.read)
 	end
+
+	redirect to('/')
 end

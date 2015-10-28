@@ -10,10 +10,31 @@ function supports_html5_storage() {
 
 $(function() {
 
+	$("#browse-button").click(function() {
+		$("input[type='file']").click();
+	});
 
-$("#browse-button").click(function() {
-	$("input[type='file']").click();
-});
-
+	$("#upload-form").submit(function(e) {
+		e.preventDefault();
+		var file = $(this).find("input[type='file']")[0].files[0];
+		var imageType = /^image\//;
+		if (!imageType.test(file.type)) {
+			alert('please select an image to upload');
+		} else {
+			var img = document.createElement("img");
+			img.file = file;
+			console.log('$(".cover")[0]:', $(".cover")[0]);
+			console.log("img:", img);
+			$(".cover")[0].appendChild(img);
+			
+			var reader = new FileReader();
+			reader.onload = (function(aImg) {
+				return function(event) {
+					aImg.src = event.target.result;
+				};
+			})(img);
+			reader.readAsDataURL(file);
+		};
+	})
 
 })
