@@ -112,6 +112,7 @@ $(function() {
 						minutesOrHours = "hours";
 					}
 					timeStartOrEnd[minutesOrHours] = parseInt(e.target.innerText);
+					this.querySelector(".dropdown-toggle").innerText = e.target.innerText;
 				}
 
 				console.log("new timeStart:", timeStart);
