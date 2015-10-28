@@ -1,3 +1,4 @@
-#upload-form {
+#upload-form .file-type {
 	visibility: hidden;
+	display: none;
 }
