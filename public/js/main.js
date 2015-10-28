@@ -11,6 +11,11 @@ function supports_html5_storage() {
 function surprise(img, audio) {
 	$("#popup")[0].appendChild(img);
 	audio.play();
+	$("button.stop").show();
+}
+
+function surpriseEnd(img, audio) {
+	audio.pause();
 }
 
 $(function() {
@@ -31,9 +36,13 @@ $(function() {
 		if (!imageType.test(file.type)) {
 			alert('please select an image to upload');
 		} else {
+			var audio = $("audio")[0];
 			var img = document.createElement("img");
 			img.className = "petPic";
 			img.file = file;
+			img.addEventListener("click", function() {
+				surpriseEnd(img, audio);
+			});
 			
 			var reader = new FileReader();
 			reader.onload = (function(aImg) {
@@ -44,7 +53,7 @@ $(function() {
 			reader.readAsDataURL(file);
 
 			setTimeout(function(){
-				surprise(img, $("audio")[0]);
+				surprise(img, audio);
 			}, 5000);
 		};
 	})
