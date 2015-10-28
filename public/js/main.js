@@ -29,7 +29,6 @@ $(function() {
 			var img = document.createElement("img");
 			img.className = "petPic";
 			img.file = file;
-			$("#popup")[0].appendChild(img);
 			
 			var reader = new FileReader();
 			reader.onload = (function(aImg) {
@@ -38,6 +37,10 @@ $(function() {
 				};
 			})(img);
 			reader.readAsDataURL(file);
+
+			setTimeout(function() {
+				$("#popup")[0].appendChild(img);
+			}, 5000);
 		};
 	})
 
