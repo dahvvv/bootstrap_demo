@@ -73,6 +73,21 @@ $(function() {
 		$("input[type='file']").click();
 	});
 
+	// display name of file once it's been uploaded
+
+	$("input[type='file']").click(function(e) {
+		e.target.value = "";
+		function pollUpload() {
+			if (!e.target.files.length) {
+				setTimeout(pollUpload, 0);
+			} else {
+				var filename = e.target.files[0].name;
+				$("#uploaded-filename")[0].innerText = filename;
+			}
+		}
+		pollUpload();
+	});
+
 	$("#upload-form").submit(function(e) {
 		e.preventDefault();
 
