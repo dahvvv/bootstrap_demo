@@ -3,6 +3,14 @@
 }
 */
 
+body {
+	background: url(/images/background1.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 p.lead {
 	margin-top: 10px;
 	margin-bottom: 10px;
@@ -96,6 +104,5 @@ input[type=submit] {
 
 .dropdown-menu {
 	left: 0%;
-	top: 0%;
 	overflow-x: hidden;
 }
