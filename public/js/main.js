@@ -152,8 +152,8 @@ $(function() {
 		// create dropdown buttons and uls for hours and minutes, append to DOM
 
 		if (minutesHoursOrMeridiem != "meridiem") {
-			var liMin = minutesHoursOrMeridiem == "minutes" ? 0 : 1;
-			var liMax = minutesHoursOrMeridiem == "minutes" ? 59 : 12;
+			var liMin = minutesHoursOrMeridiem == "minutes" ? 0 : 0;
+			var liMax = minutesHoursOrMeridiem == "minutes" ? 59 : 11;
 			var label = $(dropdown).hasClass("start-time") ? "start-" : "end-";
 			label += minutesHoursOrMeridiem;
 
@@ -163,11 +163,10 @@ $(function() {
 			ul.addClass("dropdown-menu").attr("role", "menu").attr("aria-labelledby", label);
 
 			for (var i = liMin; i <= liMax; i++) {
-				console.log("liMin: " + liMin + "   liMax: " + liMax + "   i: " + i);
-				var li = $("<li>"), a = $("<a>");
+				var li = $("<li>"), a = $("<a>"), display;
 				li.attr("role", "presentation");
 				a.attr("role", "menuitem").attr("tabindex", "-1").attr("href", "#")
-				[0].innerText = minutesHoursOrMeridiem == "minutes" ? twoDigits(i) : i;
+				[0].innerText = minutesHoursOrMeridiem == "minutes" ? twoDigits(i) : (i || 12);
 				ul.append(li.append(a));
 			};
 
@@ -177,9 +176,7 @@ $(function() {
 		// set DOM to display whatever times are stored in the timeStart and timeEnd js objects
 
 		var display = timeStartOrEnd[minutesHoursOrMeridiem];
-		if (minutesHoursOrMeridiem == "minutes") {
-			display = twoDigits(display);
-		}
+		display = minutesHoursOrMeridiem == "minutes" ? twoDigits(display) : (display || 12);
 		dropdown.querySelector(".dropdown-toggle").innerText = display;
 
 		// add click event so that each item in the dropdown menu will, on click, update the stored time values, update the DOM, and set a new waiting time for the pet surprise
