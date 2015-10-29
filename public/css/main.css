@@ -97,4 +97,6 @@ input[type=submit] {
 .dropdown-menu {
 	left: 0%;
 	top: 0%;
+	max-height: 250px;
+	overflow-x: hidden;
 }

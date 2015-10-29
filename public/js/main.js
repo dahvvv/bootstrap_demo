@@ -153,7 +153,7 @@ $(function() {
 
 		if (minutesHoursOrMeridiem != "meridiem") {
 			var liMin = minutesHoursOrMeridiem == "minutes" ? 0 : 1;
-			var liMax = minutesHoursOrMeridiem == "minutes" ? 69 : 12;
+			var liMax = minutesHoursOrMeridiem == "minutes" ? 59 : 12;
 			var label = $(dropdown).hasClass("start-time") ? "start-" : "end-";
 			label += minutesHoursOrMeridiem;
 
@@ -161,9 +161,6 @@ $(function() {
 			button.addClass("dropdown-toggle").attr("id",label).attr("data-toggle", "dropdown");
 			$(dropdown).append(button);
 			ul.addClass("dropdown-menu").attr("role", "menu").attr("aria-labelledby", label);
-			if (minutesHoursOrMeridiem == "minutes") {
-				$(ul).css("top", "-1000%");
-			}
 
 			for (var i = liMin; i <= liMax; i++) {
 				console.log("liMin: " + liMin + "   liMax: " + liMax + "   i: " + i);
