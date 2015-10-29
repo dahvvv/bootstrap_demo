@@ -19,7 +19,7 @@ function surpriseEnd(img, audio) {
 	$(img).hide();
 }
 
-function setSurpriseTime(img, audio) {
+function prepareSurprise(img, audio) {
 	var msStart = distanceFromNow(timeStart.hours, timeStart.minutes);
 	var msEnd = distanceFromNow(timeEnd.hours, timeEnd.minutes);
 	var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
@@ -84,7 +84,7 @@ $(function() {
 			})(img);
 			reader.readAsDataURL(file);
 
-			setSurpriseTime(img, audio);
+			prepareSurprise(img, audio);
 		};
 	});
 
