@@ -10,12 +10,12 @@ function supports_html5_storage() {
 
 function surpriseBegin() {
 	$("#petPic").show();
-	$("audio")[0].play();
+	$("audio.chosen")[0].play();
 	$("button.stop").show();
 }
 
 function surpriseEnd(img) {
-	$("audio")[0].pause();
+	$("audio.chosen")[0].pause();
 	$(img).hide();
 }
 
@@ -100,6 +100,15 @@ $(function() {
 				};
 			})(img);
 			reader.readAsDataURL(file);
+
+			// choose a species of animal sounds based on the user's animal-species choice, and choose a random audio clip from that species
+
+			var species = $("input[name='species']:checked", "#upload-form").val();
+			var soundOptions = $("." + species + "-sounds");
+			$(soundOptions).removeClass("chosen");
+			var chosenSound = soundOptions[Math.floor(Math.random() * soundOptions.length)];
+			$(chosenSound).addClass("chosen");
+			console.log("chosen sound:", chosenSound);
 
 			// pick a random moment between the user-selected time boundaries, and tell the <img> to become visible at that moment
 
