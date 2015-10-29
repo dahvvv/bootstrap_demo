@@ -20,8 +20,10 @@ function surpriseEnd(img, audio) {
 }
 
 function prepareSurprise(audio) {
-	var msStart = distanceFromNow(timeStart.hours, timeStart.minutes);
-	var msEnd = distanceFromNow(timeEnd.hours, timeEnd.minutes);
+	var timeStartHours = hours12To24(timeStart.hours, timeStart.meridiem);
+	var timeEndHours = hours12To24(timeEnd.hours, timeEnd.meridiem);
+	var msStart = distanceFromNow(timeStartHours, timeStart.minutes);
+	var msEnd = distanceFromNow(timeEndHours, timeEnd.minutes);
 	var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
 
 	setTimeout(function(){
@@ -39,16 +41,20 @@ function distanceFromNow(hours, minutes) {
 	return distance;
 }
 
-function setAMPM(hours, setting) {
-	if (["AM", "PM"].indexOf(setting) == -1) {
-		return false;
-	}
-	hours = (setting == "AM") ? (hours % 12) : (hours % 12 + 12);
+function hours12To24(hours, meridiem) {
+	hours = (meridiem == "AM") ? (hours % 12) : (hours % 12 + 12);
 	return hours;
 }
 
-var timeStart = { "hours": 0, "minutes": 30 };
-var timeEnd = { "hours": 0, "minutes": 31 };
+// not necessary?
+// function hours24To12(hours) {
+// 	var meridiem = hours < 12 ? "AM" : "PM";
+// 	var hours = hours % 12 ? hours % 12 : 12;
+// 	return { "hours": hours, "meridiem": meridiem };
+// }
+
+var timeStart = { "hours": 1, "minutes": 7, "meridiem": "AM" };
+var timeEnd = { "hours": 1, "minutes": 8, "meridiem": "AM" };
 
 $(function() {
 
@@ -92,30 +98,33 @@ $(function() {
 
 	var dropdowns = document.getElementsByClassName("dropdown");
 	Array.prototype.forEach.call(dropdowns, function(dropdown) {
+
+		console.log("timeStart:", timeStart);
+		console.log("timeEnd:", timeEnd);
+
+		var timeStartOrEnd;
+		if (Array.prototype.indexOf.call(dropdown.classList, "start-time") != -1) {
+			timeStartOrEnd = timeStart;
+		} else {
+			timeStartOrEnd = timeEnd;
+		}
+
+		var minutesHoursOrMeridiem = Array.prototype.filter.call(dropdown.classList, function(aClass) {
+			return ["minutes", "hours", "meridiem"].indexOf(aClass) != -1;
+		})[0];
+
+		dropdown.querySelector(".dropdown-toggle").innerText = timeStartOrEnd[minutesHoursOrMeridiem];
+
 		dropdown.addEventListener("click", function(e) {
 			if (e.target.getAttribute("role") == "menuitem") {
 				e.preventDefault();
 
-				console.log("timeStart:", timeStart);
-				console.log("timeEnd:", timeEnd);
-
-				var timeStartOrEnd, minutesOrHours;
-				if (Array.prototype.indexOf.call(this.classList, "start-time") != -1) {
-					timeStartOrEnd = timeStart;
-				} else {
-					timeStartOrEnd = timeEnd;
+				var newTimeVal = e.target.innerText;
+				this.querySelector(".dropdown-toggle").innerText = newTimeVal;
+				if (minutesHoursOrMeridiem != "meridiem") {
+					newTimeVal = parseInt(newTimeVal);
 				}
-				if (["AM", "PM"].indexOf(e.target.innerText) != -1) {
-					timeStartOrEnd.hours = setAMPM(timeStartOrEnd.hours, parseInt(e.target.innerText));
-				} else {
-					if (Array.prototype.indexOf.call(this.classList, "minutes") != -1) {
-						minutesOrHours = "minutes";
-					} else {
-						minutesOrHours = "hours";
-					}
-					timeStartOrEnd[minutesOrHours] = parseInt(e.target.innerText);
-					this.querySelector(".dropdown-toggle").innerText = e.target.innerText;
-				}
+				timeStartOrEnd[minutesHoursOrMeridiem] = newTimeVal;
 
 				console.log("new timeStart:", timeStart);
 				console.log("new timeEnd:", timeEnd);
