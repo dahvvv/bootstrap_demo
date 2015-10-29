@@ -8,27 +8,25 @@ function supports_html5_storage() {
   }
 }
 
-function surpriseBegin(audio) {
+function surpriseBegin() {
 	$("#petPic").show();
-	audio.play();
+	$("audio")[0].play();
 	$("button.stop").show();
 }
 
-function surpriseEnd(img, audio) {
-	audio.pause();
+function surpriseEnd(img) {
+	$("audio")[0].pause();
 	$(img).hide();
 }
 
-function prepareSurprise(audio) {
+function prepareSurprise() {
 	var timeStartHours = hours12To24(timeStart.hours, timeStart.meridiem);
 	var timeEndHours = hours12To24(timeEnd.hours, timeEnd.meridiem);
 	var msStart = distanceFromNow(timeStartHours, timeStart.minutes);
 	var msEnd = distanceFromNow(timeEndHours, timeEnd.minutes);
 	var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
 
-	setTimeout(function(){
-		surpriseBegin(audio);
-	}, msRand);
+	setTimeout(surpriseBegin, msRand);
 }
 
 function distanceFromNow(hours, minutes) {
@@ -87,7 +85,7 @@ $(function() {
 			img.file = file;
 			img.style.display = "none";
 			img.addEventListener("click", function() {
-				surpriseEnd(img, audio);
+				surpriseEnd(img);
 			});
 			$("#popup")[0].appendChild(img);
 			
@@ -99,7 +97,7 @@ $(function() {
 			})(img);
 			reader.readAsDataURL(file);
 
-			prepareSurprise(audio);
+			prepareSurprise();
 		};
 	});
 
@@ -147,6 +145,10 @@ $(function() {
 				}
 				timeStartOrEnd[minutesHoursOrMeridiem] = newTimeVal;
 				
+				if ($("#petPic").length) {
+					prepareSurprise();
+				}
+
 			}
 		});
 	
