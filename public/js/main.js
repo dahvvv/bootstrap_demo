@@ -64,11 +64,6 @@ var surprisePrepared;
 
 $(function() {
 
-	$("a.about").click(function(e) {
-		e.preventDefault();
-		$("p.about").slideToggle();
-	})
-
 	$("#browse-button").click(function() {
 		$("input[type='file']").click();
 	});
