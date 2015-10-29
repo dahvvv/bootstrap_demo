@@ -1,22 +1,13 @@
 console.log(":0");
 
-function supports_html5_storage() {
-  try {
-    return 'localStorage' in window && window['localStorage'] !== null;
-  } catch (e) {
-    return false;
-  }
-}
-
 function surpriseBegin() {
 	$("#petPic").show();
 	$("audio.chosen")[0].play();
-	$("button.stop").show();
 }
 
-function surpriseEnd(img) {
+function surpriseEnd() {
 	$("audio.chosen")[0].pause();
-	$(img).hide();
+	$("#petPic").hide();
 }
 
 function prepareSurprise() {
@@ -50,13 +41,6 @@ function twoDigits(num) {
 	}
 	return num;
 }
-
-// not necessary?
-// function hours24To12(hours) {
-// 	var meridiem = hours < 12 ? "AM" : "PM";
-// 	var hours = hours % 12 ? hours % 12 : 12;
-// 	return { "hours": hours, "meridiem": meridiem };
-// }
 
 var timeStart = { "hours": 9, "minutes": 0, "meridiem": "AM" };
 var timeEnd = { "hours": 5, "minutes": 0, "meridiem": "PM" };
@@ -102,9 +86,7 @@ $(function() {
 			img.id = "petPic";
 			img.file = file;
 			img.style.display = "none";
-			img.addEventListener("click", function() {
-				surpriseEnd(img);
-			});
+			img.addEventListener("click", surpriseEnd);
 			$("#popup")[0].appendChild(img);
 			
 			var reader = new FileReader();
