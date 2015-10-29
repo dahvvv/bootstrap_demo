@@ -42,6 +42,10 @@ p.lead {
 	display: none;
 }
 
+input[type=radio] {
+	margin-bottom: 9px;
+}
+
 #popup {
 	width: 100%;
 	height: 100%;
