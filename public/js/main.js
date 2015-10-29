@@ -75,6 +75,9 @@ $(function() {
 
 	$("#upload-form").submit(function(e) {
 		e.preventDefault();
+
+		// create an <img> from the uploaded file and append it to the DOM (but invisibly for now)
+
 		var file = $(this).find("input[type='file']")[0].files[0];
 		var imageType = /^image\//;
 		if (!imageType.test(file.type)) {
@@ -97,6 +100,8 @@ $(function() {
 				};
 			})(img);
 			reader.readAsDataURL(file);
+
+			// pick a random moment between the user-selected time boundaries, and tell the <img> to become visible at that moment
 
 			if (surprisePrepared) {
 				clearTimeout(surprisePrepared);
@@ -160,3 +165,4 @@ $(function() {
 	});
 
 })
+
