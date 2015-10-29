@@ -46,6 +46,13 @@ function hours12To24(hours, meridiem) {
 	return hours;
 }
 
+function twoDigits(num) {
+	if (String(num).length == 1) {
+		num = "0" + num;
+	}
+	return num;
+}
+
 // not necessary?
 // function hours24To12(hours) {
 // 	var meridiem = hours < 12 ? "AM" : "PM";
@@ -99,9 +106,6 @@ $(function() {
 	var dropdowns = document.getElementsByClassName("dropdown");
 	Array.prototype.forEach.call(dropdowns, function(dropdown) {
 
-		console.log("timeStart:", timeStart);
-		console.log("timeEnd:", timeEnd);
-
 		var timeStartOrEnd;
 		if (Array.prototype.indexOf.call(dropdown.classList, "start-time") != -1) {
 			timeStartOrEnd = timeStart;
@@ -115,6 +119,19 @@ $(function() {
 
 		dropdown.querySelector(".dropdown-toggle").innerText = timeStartOrEnd[minutesHoursOrMeridiem];
 
+		if (minutesHoursOrMeridiem != "meridiem") {
+			var liMin = minutesHoursOrMeridiem == "minutes" ? 0 : 1;
+			var liMax = minutesHoursOrMeridiem == "minutes" ? 59 : 12;
+
+			for (var i = liMin; i <= liMax + 1; i++) {
+				var li = $("<li>"), a = $("<a>");
+				li.attr("role", "presentation");
+				a.attr("role", "menuitem").attr("tabindex", "-1").attr("href", "#")
+				[0].innerText = minutesHoursOrMeridiem == "minutes" ? twoDigits(i) : i;
+				$(dropdown).find("ul").append(li.append(a));
+			};
+		}
+
 		dropdown.addEventListener("click", function(e) {
 			if (e.target.getAttribute("role") == "menuitem") {
 				e.preventDefault();
@@ -125,9 +142,6 @@ $(function() {
 					newTimeVal = parseInt(newTimeVal);
 				}
 				timeStartOrEnd[minutesHoursOrMeridiem] = newTimeVal;
-
-				console.log("new timeStart:", timeStart);
-				console.log("new timeEnd:", timeEnd);
 				
 			}
 		});
