@@ -26,7 +26,7 @@ function prepareSurprise() {
 	var msEnd = distanceFromNow(timeEndHours, timeEnd.minutes);
 	var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
 
-	setTimeout(surpriseBegin, msRand);
+	return setTimeout(surpriseBegin, msRand);
 }
 
 function distanceFromNow(hours, minutes) {
@@ -60,6 +60,7 @@ function twoDigits(num) {
 
 var timeStart = { "hours": 9, "minutes": 0, "meridiem": "AM" };
 var timeEnd = { "hours": 5, "minutes": 0, "meridiem": "PM" };
+var surprisePrepared;
 
 $(function() {
 
@@ -97,7 +98,10 @@ $(function() {
 			})(img);
 			reader.readAsDataURL(file);
 
-			prepareSurprise();
+			if (surprisePrepared) {
+				clearTimeout(surprisePrepared);
+			}
+			surprisePrepared = prepareSurprise();
 		};
 	});
 
@@ -146,6 +150,7 @@ $(function() {
 				timeStartOrEnd[minutesHoursOrMeridiem] = newTimeVal;
 				
 				if ($("#petPic").length) {
+					clearTimeout(surprisePrepared);
 					prepareSurprise();
 				}
 
