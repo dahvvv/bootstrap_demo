@@ -161,6 +161,8 @@ $(function() {
 			button.addClass("dropdown-toggle").attr("id",label).attr("data-toggle", "dropdown");
 			$(dropdown).append(button);
 			ul.addClass("dropdown-menu").attr("role", "menu").attr("aria-labelledby", label);
+			var maxHeight = minutesHoursOrMeridiem == "minutes" ? 250 : 150;
+			$(ul).css("max-height", maxHeight + "px").css("top", maxHeight / -2 + "px");
 
 			for (var i = liMin; i <= liMax; i++) {
 				var li = $("<li>"), a = $("<a>"), display;
