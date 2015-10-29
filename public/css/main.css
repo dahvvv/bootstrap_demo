@@ -89,3 +89,12 @@ input[type=submit] {
 .mastfoot {
 	border: 1px solid green;
 }*/
+
+.dropdown-menu>li>a {
+	padding: 0px 20px;
+}
+
+.dropdown-menu {
+	left: 0%;
+	top: 0%;
+}
