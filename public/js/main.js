@@ -119,7 +119,7 @@ $(function() {
 
 			var species = $("input[name='species']:checked", "#upload-form").val();
 			var soundOptions = $("." + species + "-sounds");
-			$(soundOptions).removeClass("chosen");
+			$("audio").removeClass("chosen");
 			var chosenSound = soundOptions[Math.floor(Math.random() * soundOptions.length)];
 			$(chosenSound).addClass("chosen");
 			console.log("chosen sound:", chosenSound);
