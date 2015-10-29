@@ -48,7 +48,7 @@ p.lead {
 	margin-top: 15%;
 }
 
-.petPic {
+#petPic {
 	height: 100%;
 	width: 100%;
 	cursor: pointer;

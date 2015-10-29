@@ -8,8 +8,8 @@ function supports_html5_storage() {
   }
 }
 
-function surpriseBegin(img, audio) {
-	$("#popup")[0].appendChild(img);
+function surpriseBegin(audio) {
+	$("#petPic").show();
 	audio.play();
 	$("button.stop").show();
 }
@@ -19,13 +19,13 @@ function surpriseEnd(img, audio) {
 	$(img).hide();
 }
 
-function prepareSurprise(img, audio) {
+function prepareSurprise(audio) {
 	var msStart = distanceFromNow(timeStart.hours, timeStart.minutes);
 	var msEnd = distanceFromNow(timeEnd.hours, timeEnd.minutes);
 	var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
 
 	setTimeout(function(){
-		surpriseBegin(img, audio);
+		surpriseBegin(audio);
 	}, msRand);
 }
 
@@ -47,8 +47,8 @@ function setAMPM(hours, setting) {
 	return hours;
 }
 
-var timeStart = { "hours": 9, "minutes": 0 };
-var timeEnd = { "hours": 17, "minutes": 0 };
+var timeStart = { "hours": 0, "minutes": 30 };
+var timeEnd = { "hours": 0, "minutes": 31 };
 
 $(function() {
 
@@ -70,11 +70,13 @@ $(function() {
 		} else {
 			var audio = $("audio")[0];
 			var img = document.createElement("img");
-			img.className = "petPic";
+			img.id = "petPic";
 			img.file = file;
+			img.style.display = "none";
 			img.addEventListener("click", function() {
 				surpriseEnd(img, audio);
 			});
+			$("#popup")[0].appendChild(img);
 			
 			var reader = new FileReader();
 			reader.onload = (function(aImg) {
@@ -84,7 +86,7 @@ $(function() {
 			})(img);
 			reader.readAsDataURL(file);
 
-			prepareSurprise(img, audio);
+			prepareSurprise(audio);
 		};
 	});
 
