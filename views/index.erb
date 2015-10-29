@@ -54,21 +54,50 @@
               At some point between 
 
               <div class="dropdown hours start-time">
-
                 <button class="dropdown-toggle" id="start-hours" data-toggle="dropdown"></button>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="start-hours">
                 </ul>
-
               </div>
-
               :
-              <span class="minutes start-time">00</span>
-              <span class="AM-PM start-time">AM</span>
+              <div class="dropdown minutes start-time">
+                <button class="dropdown-toggle" id="start-minutes" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="start-minutes">
+                </ul>
+              </div>
+              <div class="dropdown meridiem start-time">
+                <button class="dropdown-toggle" id="start-meridiem" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="start-meridiem">
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">AM</a>
+                  </li>
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">PM</a>
+                  </li>
+                </ul>
+              </div>
                and 
-              <span class="hours end-time">5</span>
+              <div class="dropdown hours end-time">
+                <button class="dropdown-toggle" id="end-hours" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="end-hours">
+                </ul>
+              </div>
               :
-              <span class="minutes end-time">00</span>
-              <span class="AM-PM end-time">PM</span>
+              <div class="dropdown minutes end-time">
+                <button class="dropdown-toggle" id="end-minutes" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="end-minutes">
+                </ul>
+              </div>
+              <div class="dropdown meridiem end-time">
+                <button class="dropdown-toggle" id="end-meridiem" data-toggle="dropdown"></button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="end-meridiem">
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">AM</a>
+                  </li>
+                  <li role="presentation">
+                    <a role="menuitem" tabindex="-1" href="#">PM</a>
+                  </li>
+                </ul>
+              </div>
               ,
             </p>
             <p class="lead">he or she will surprise you and say hello.</p>

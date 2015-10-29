@@ -60,8 +60,8 @@ function twoDigits(num) {
 // 	return { "hours": hours, "meridiem": meridiem };
 // }
 
-var timeStart = { "hours": 1, "minutes": 7, "meridiem": "AM" };
-var timeEnd = { "hours": 1, "minutes": 8, "meridiem": "AM" };
+var timeStart = { "hours": 9, "minutes": 0, "meridiem": "AM" };
+var timeEnd = { "hours": 5, "minutes": 0, "meridiem": "PM" };
 
 $(function() {
 
@@ -117,7 +117,11 @@ $(function() {
 			return ["minutes", "hours", "meridiem"].indexOf(aClass) != -1;
 		})[0];
 
-		dropdown.querySelector(".dropdown-toggle").innerText = timeStartOrEnd[minutesHoursOrMeridiem];
+		var display = timeStartOrEnd[minutesHoursOrMeridiem];
+		if (minutesHoursOrMeridiem == "minutes") {
+			display = twoDigits(display);
+		}
+		dropdown.querySelector(".dropdown-toggle").innerText = display;
 
 		if (minutesHoursOrMeridiem != "meridiem") {
 			var liMin = minutesHoursOrMeridiem == "minutes" ? 0 : 1;
