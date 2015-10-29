@@ -9,6 +9,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  color: #0D0000;
 }
 
 p.lead {
@@ -18,6 +19,7 @@ p.lead {
 
 .btn {
 	margin: 7px 5px;
+	border: 1px solid #0D0000;
 }
 
 .init-hidden {
@@ -40,7 +42,7 @@ p.lead {
 	background-color: rgba(0, 0, 0, 0);
 	font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 	font-size: 27px;
-	border: 1px solid white;
+	border: 1px solid #0D0000;
 	padding: 2px 5px;
 }
 
