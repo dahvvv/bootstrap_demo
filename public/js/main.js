@@ -77,6 +77,11 @@ $(function() {
 	$("#upload-form").submit(function(e) {
 		e.preventDefault();
 
+		// change the submit button's appearance
+		
+		$(this).find("input[type='submit']").css("background-color", "#E9E9E9");
+		$("#start-hours").focus();
+
 		// create an <img> from the uploaded file and append it to the DOM (but invisibly for now)
 
 		var file = $(this).find("input[type='file']")[0].files[0];
