@@ -54,7 +54,7 @@ $(function() {
 
 	// once a file has been uploaded,
 	// display the file's name
-	// and show the rest of the form html
+	// and show the rest of the form's html
 
 	$("input[type='file']").click(function(e) {
 		e.target.value = "";
@@ -66,6 +66,7 @@ $(function() {
 				$("#uploaded-filename")[0].innerText = filename;
 				$(".init-hidden").show();
 				$("input[type='radio']")[0].focus();
+				$(".about").hide();
 			}
 		}
 		pollUpload();
