@@ -3,11 +3,13 @@ console.log(":0");
 function surpriseBegin() {
 	$("#petPic").show();
 	$("audio.chosen")[0].play();
+	$(".init-hidden, #browse-button").hide();
 }
 
 function surpriseEnd() {
 	$("audio.chosen")[0].pause();
 	$("#petPic").hide();
+	$(".init-hidden, #browse-button").show();
 }
 
 function prepareSurprise() {
