@@ -141,6 +141,8 @@ $(function() {
 
 			var button = $("<button>"), ul = $("<ul>");
 			button.addClass("dropdown-toggle").attr("id",label).attr("data-toggle", "dropdown");
+			button.css("background-color", "#0D0000")
+			.css("color", "white");
 			$(dropdown).append(button);
 			ul.addClass("dropdown-menu").attr("role", "menu").attr("aria-labelledby", label);
 			var maxHeight = minutesHoursOrMeridiem == "minutes" ? 250 : 150;

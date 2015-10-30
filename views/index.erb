@@ -44,7 +44,7 @@
           <div class="inner cover lead">
             <h1 class="cover-heading">Pet Visit</h1>
             <div id="popup"></div>
-            <p class="about">Upload a picture of your pet</p>
+            <p class="about">Upload a picture of your pet!</p>
             <button class="btn btn-lg btn-default" id="browse-button">Browse</button>
             <span class="init-hidden">
                <span id="uploaded-filename"></span><br>
@@ -57,43 +57,45 @@
                 <input class="btn btn-lg btn-default" type="radio" name="species" value="other"> Other<br>
                 <input class="btn btn-lg btn-default" type="submit" value="Upload!">
               </form>
-            </span>
+            
            
-            <p class="lead">
-              Expect a visit between 
+              <p class="lead">
+                Expect a visit between 
 
-              <div class="dropdown hours start-time"></div>
-              :
-              <div class="dropdown minutes start-time"></div>
-              <div class="dropdown meridiem start-time">
-                <button class="dropdown-toggle" id="start-meridiem" data-toggle="dropdown"></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="start-meridiem">
-                  <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">AM</a>
-                  </li>
-                  <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">PM</a>
-                  </li>
-                </ul>
-              </div>
-               and 
-              <div class="dropdown hours end-time"></div>
-              :
-              <div class="dropdown minutes end-time"></div>
-              <div class="dropdown meridiem end-time">
-                <button class="dropdown-toggle" id="end-meridiem" data-toggle="dropdown"></button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="end-meridiem">
-                  <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">AM</a>
-                  </li>
-                  <li role="presentation">
-                    <a role="menuitem" tabindex="-1" href="#">PM</a>
-                  </li>
-                </ul>
-              </div>
-              ,
-            </p>
-            <p class="lead">Best with sound on!</p>
+                <div class="dropdown hours start-time"></div>
+                :
+                <div class="dropdown minutes start-time"></div>
+                <div class="dropdown meridiem start-time">
+                  <button class="dropdown-toggle" id="start-meridiem" data-toggle="dropdown"></button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="start-meridiem">
+                    <li role="presentation">
+                      <a role="menuitem" tabindex="-1" href="#">AM</a>
+                    </li>
+                    <li role="presentation">
+                      <a role="menuitem" tabindex="-1" href="#">PM</a>
+                    </li>
+                  </ul>
+                </div>
+                 and 
+                <div class="dropdown hours end-time"></div>
+                :
+                <div class="dropdown minutes end-time"></div>
+                <div class="dropdown meridiem end-time">
+                  <button class="dropdown-toggle" id="end-meridiem" data-toggle="dropdown"></button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="end-meridiem">
+                    <li role="presentation">
+                      <a role="menuitem" tabindex="-1" href="#">AM</a>
+                    </li>
+                    <li role="presentation">
+                      <a role="menuitem" tabindex="-1" href="#">PM</a>
+                    </li>
+                  </ul>
+                </div>
+                ,
+              </p>
+              <p class="lead">Best with sound on!</p>
+
+            </span>
 
             <audio class="cat-sounds" src="/sounds/cat/purr01.mp3" loop preload="auto">
               <p>Your browser does not support the <code>audio</code> element.</p>
