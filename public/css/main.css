@@ -94,9 +94,15 @@ input[type=submit] {
 }
 
 #petPic {
-	height: 100%;
-	width: 100%;
+	max-height: 500px;
+	max-width: 50%;
 	cursor: pointer;
+}
+
+@media (min-width: 992px) {
+  #petPic {
+    max-width: 100%;
+  }
 }
 
 .dropdown-menu>li>a {
