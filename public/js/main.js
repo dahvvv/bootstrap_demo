@@ -65,7 +65,8 @@ $(function() {
 				setTimeout(pollUpload, 0);
 			} else {
 				var filename = e.target.files[0].name;
-				$("#uploaded-filename")[0].innerText = filename;
+				$("#uploaded-filename").html(filename);
+				console.log('$("#uploaded-filename"):', $("#uploaded-filename"));
 				$(".init-hidden").show();
 				$("input[type='radio']")[0].focus();
 				$(".about").hide();
@@ -159,8 +160,7 @@ $(function() {
 			for (var i = liMin; i <= liMax; i++) {
 				var li = $("<li>"), a = $("<a>"), display;
 				li.attr("role", "presentation");
-				a.attr("role", "menuitem").attr("tabindex", "-1").attr("href", "#")
-				[0].innerText = minutesHoursOrMeridiem == "minutes" ? twoDigits(i) : (i || 12);
+				a.attr("role", "menuitem").attr("tabindex", "-1").attr("href", "#").html(minutesHoursOrMeridiem == "minutes" ? twoDigits(i) : (i || 12));
 				ul.append(li.append(a));
 			};
 
@@ -171,7 +171,8 @@ $(function() {
 
 		var display = timeStartOrEnd[minutesHoursOrMeridiem];
 		display = minutesHoursOrMeridiem == "minutes" ? twoDigits(display) : (display || 12);
-		dropdown.querySelector(".dropdown-toggle").innerText = display;
+		console.log("display:", display);
+		$(dropdown).find(".dropdown-toggle").html(display);
 
 		// add click event so that each item in the dropdown menu will, on click, update the stored time values, update the DOM, and set a new waiting time for the pet surprise
 
@@ -179,8 +180,10 @@ $(function() {
 			if (e.target.getAttribute("role") == "menuitem") {
 				e.preventDefault();
 
-				var newTimeVal = e.target.innerText;
-				this.querySelector(".dropdown-toggle").innerText = newTimeVal;
+				var newTimeVal = $(e.target).html();
+				console.log("newTimeVal:", newTimeVal);
+				$(this).find(".dropdown-toggle").html(newTimeVal);
+				console.log('$(this).find(".dropdown-toggle"):', $(this).find(".dropdown-toggle"));
 				if (minutesHoursOrMeridiem != "meridiem") {
 					newTimeVal = parseInt(newTimeVal);
 				}
