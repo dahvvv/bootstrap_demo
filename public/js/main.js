@@ -68,12 +68,10 @@ $(function() {
 		if (!imageType.test(file.type)) {
 			alert('please select an image to upload');
 		} else {
-			// var audio = $("audio")[0];
 			var img = document.createElement("img");
 			img.id = "petPic";
 			img.file = file;
 			img.style.display = "none";
-			// img.addEventListener("click", surpriseEnd);
 			$("#popup")[0].appendChild(img);
 			
 			var reader = new FileReader();
