@@ -1,27 +1,5 @@
 console.log(":0");
 
-function surpriseBegin() {
-	$("#petPic").show();
-	$("audio.chosen")[0].play();
-	$(".init-hidden, #browse-button").hide();
-}
-
-function surpriseEnd() {
-	$("audio.chosen")[0].pause();
-	$("#petPic").hide();
-	$(".init-hidden, #browse-button").show();
-}
-
-function prepareSurprise() {
-	var timeStartHours = hours12To24(timeStart.hours, timeStart.meridiem);
-	var timeEndHours = hours12To24(timeEnd.hours, timeEnd.meridiem);
-	var msStart = distanceFromNow(timeStartHours, timeStart.minutes);
-	var msEnd = distanceFromNow(timeEndHours, timeEnd.minutes);
-	var msRand = Math.floor(Math.random() * (msEnd - msStart)) + msStart;
-
-	return setTimeout(surpriseBegin, msRand);
-}
-
 function distanceFromNow(hours, minutes) {
 	var now = new Date();
 	var future = new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
@@ -46,7 +24,7 @@ function twoDigits(num) {
 
 var timeStart = { "hours": 9, "minutes": 0, "meridiem": "AM" };
 var timeEnd = { "hours": 5, "minutes": 0, "meridiem": "PM" };
-var surprisePrepared;
+var surprise, surprisePrepared;
 
 $(function() {
 
@@ -90,12 +68,12 @@ $(function() {
 		if (!imageType.test(file.type)) {
 			alert('please select an image to upload');
 		} else {
-			var audio = $("audio")[0];
+			// var audio = $("audio")[0];
 			var img = document.createElement("img");
 			img.id = "petPic";
 			img.file = file;
 			img.style.display = "none";
-			img.addEventListener("click", surpriseEnd);
+			// img.addEventListener("click", surpriseEnd);
 			$("#popup")[0].appendChild(img);
 			
 			var reader = new FileReader();
@@ -113,14 +91,23 @@ $(function() {
 			$("audio").removeClass("chosen");
 			var chosenSound = soundOptions[Math.floor(Math.random() * soundOptions.length)];
 			$(chosenSound).addClass("chosen");
-			console.log("chosen sound:", chosenSound);
+
+			// create new Surprise object
+
+			surprise = new Surprise({
+				"audio": chosenSound,
+				"pic": img,
+				"tagsToHide": $(".init-hidden, #browse-button")
+			});
+
+			console.log("surprise!", surprise);
 
 			// pick a random moment between the user-selected time boundaries, and tell the <img> to become visible at that moment
 
 			if (surprisePrepared) {
 				clearTimeout(surprisePrepared);
 			}
-			surprisePrepared = prepareSurprise();
+			surprisePrepared = surprise.countdown();
 		};
 	});
 
@@ -191,7 +178,7 @@ $(function() {
 				
 				if ($("#petPic").length) {
 					clearTimeout(surprisePrepared);
-					prepareSurprise();
+					surprisePrepared = surprise.countdown();
 				}
 
 			}
