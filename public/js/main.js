@@ -98,8 +98,6 @@ $(function() {
 				"tagsToHide": $(".init-hidden, #browse-button")
 			});
 
-			console.log("surprise!", surprise);
-
 			// pick a random moment between the user-selected time boundaries, and tell the <img> to become visible at that moment
 
 			if (surprisePrepared) {
@@ -166,9 +164,7 @@ $(function() {
 				e.preventDefault();
 
 				var newTimeVal = $(e.target).html();
-				console.log("newTimeVal:", newTimeVal);
 				$(this).find(".dropdown-toggle").html(newTimeVal);
-				console.log('$(this).find(".dropdown-toggle"):', $(this).find(".dropdown-toggle"));
 				if (minutesHoursOrMeridiem != "meridiem") {
 					newTimeVal = parseInt(newTimeVal);
 				}
